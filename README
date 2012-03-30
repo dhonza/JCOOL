@@ -1,0 +1,21 @@
+JCOOL (Java COntinuous Optimization Library)
+--------------------------------------------
+
+PREREQUISITES
+
+In order to compile JCOOL you need:
+    Java 1.5+: http://java.com/
+    Maven2: http://maven.apache.org/
+    
+COMPILE & INSTALL
+
+To compile JCOOL run:
+
+    mvn compile
+
+to install
+
+    mvn install
+
+--------------------------------------------
+COPYRIGHT Jan Drchal, Vladimír Bičík, Martin Hvizdoš, Pavel Kordík, Roman Machytka, Martin Miklánek, Antonín Šulc, FEL ČVUT, 2012

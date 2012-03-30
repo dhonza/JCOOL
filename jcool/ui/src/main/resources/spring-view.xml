@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+   <!-- 
+    Experiment
+   -->
+    <bean id="view.experiment" class="cz.cvut.felk.cig.jcool.ui.view.Experiment" init-method="initComponents">
+        <property name="visualizationPanel" ref="view.visualization" />
+        <property name="logPanel" ref="view.experimentLog" />
+        <property name="settingsPanel" ref="view.experimentSettings" />
+        <!-- actions -->
+        <property name="hideControlsAction" ref="doHideControls" />
+        <property name="hideLogAction" ref="doHideLog" />
+        <property name="startExperimentAction" ref="doStartExperiment" />
+        <property name="stopExperimentAction" ref="doStopExperiment" />
+        <property name="resetExperimentAction" ref="doResetExperiment" />
+        <property name="showResultsAction" ref="doShowResults" />
+        <property name="replayExperimentAction" ref="doReplayExperiment" />
+    </bean>
+
+    <bean id="view.experimentSettings" class="cz.cvut.felk.cig.jcool.ui.view.ExperimentSettings" init-method="initComponents">
+        <property name="controlsPanel" ref="view.experimentControls" />
+        <property name="detailsPanel" ref="view.experimentDetails" />
+        <property name="setupPanel" ref="view.experimentSetup" />
+    </bean>
+
+    <bean id="view.experimentSetup" class="cz.cvut.felk.cig.jcool.ui.view.ExperimentSetup" init-method="initComponents">
+        <property name="experiment" ref="model.experimentSetup" />
+        <property name="extractor" ref="propertyExtractor" />
+    </bean>
+
+    <bean id="view.experimentDetails" class="cz.cvut.felk.cig.jcool.ui.view.ExperimentDetails" init-method="initComponents">
+        <property name="experiment" ref="model.experimentSetup" />
+        <property name="model" ref="model.experimentDetails"/>
+        <property name="extractor" ref="propertyExtractor" />
+    </bean>
+
+    <bean id="view.experimentControls" class="cz.cvut.felk.cig.jcool.ui.view.ExperimentControls" init-method="initComponents">
+        <property name="startExperimentAction" ref="doStartExperiment" />
+        <property name="stopExperimentAction" ref="doStopExperiment" />
+        <property name="resetExperimentAction" ref="doResetExperiment" />
+        <property name="showResultsAction" ref="doShowResults" />
+        <property name="replayExperimentAction" ref="doReplayExperiment" />
+    </bean>
+
+    <bean id="view.experimentResults" class="cz.cvut.felk.cig.jcool.ui.view.ResultsDialog">
+        <constructor-arg index="0" ref="view.experiment" />
+        <constructor-arg index="1" value="Results overview" />
+        <constructor-arg index="2" value="true" />
+        <constructor-arg index="3" ref="experimentRunner" />
+        <constructor-arg index="4" ref="doSaveResults" />
+        <constructor-arg index="5" ref="model.visualization" />
+        <constructor-arg index="6" ref="view.visualizationControls" />
+    </bean>
+   
+   <!-- 
+    Log
+   -->
+    <bean id="view.logTextArea" class="javax.swing.JTextArea" />
+
+    <bean id="view.experimentLog" class="cz.cvut.felk.cig.jcool.ui.view.ExperimentLog" init-method="initComponents">
+        <property name="textArea" ref="view.logTextArea" />
+    </bean>
+   
+   <!-- 
+    Telemetry
+   -->
+    <bean id="view.telemetry" class="cz.cvut.felk.cig.jcool.ui.view.Telemetry" init-method="initComponents" />
+   
+   <!-- 
+    Visualization
+   -->
+    <bean id="view.primaryVisualizationPanel" class="javax.swing.JPanel" />
+
+    <bean id="view.secondaryVisualizationPanel" class="javax.swing.JPanel" />
+
+    <bean id="view.visualizationControls" class="cz.cvut.felk.cig.jcool.ui.view.VisualizationControls" init-method="initComponents">
+        <property name="visualization" ref="model.visualization" />
+        <property name="extractor" ref="propertyExtractor" />
+    </bean>
+
+    <bean id="view.visualization" class="cz.cvut.felk.cig.jcool.ui.view.Visualization" init-method="initComponents">
+        <property name="visualization" ref="model.visualization" />
+        <property name="visualizationControls" ref="view.visualizationControls" />
+        <property name="telemetry" ref="view.telemetry" />
+        <property name="primaryVisualization" ref="view.primaryVisualizationPanel" />
+        <property name="secondaryVisualization" ref="view.secondaryVisualizationPanel" />
+    </bean>
+</beans>

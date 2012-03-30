@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="experimentUpdater" class="cz.cvut.felk.cig.jcool.ui.controller.ExperimentUpdater">
+        <property name="experimentRunner" ref="experimentRunner" />
+        <property name="experimentSetup" ref="model.experimentSetup" />
+    </bean>
+
+    <!--
+        ACTIONS
+    -->
+    <bean id="doHideControls" class="cz.cvut.felk.cig.jcool.ui.controller.HideControlsAction" />
+
+    <bean id="doHideLog" class="cz.cvut.felk.cig.jcool.ui.controller.HideLogAction" />
+
+    <bean id="doShowResults" class="cz.cvut.felk.cig.jcool.ui.controller.ShowResultsAction">
+        <property name="experimentRunner" ref="experimentRunner" />
+        <property name="resultsDialog" ref="view.experimentResults" />
+    </bean>
+
+    <bean id="doSaveResults" class="cz.cvut.felk.cig.jcool.ui.controller.SaveResultsAction" />
+
+    <bean id="doReplayExperiment" class="cz.cvut.felk.cig.jcool.ui.controller.ReplayExperimentAction">
+        <property name="experimentRunner" ref="experimentRunner" />
+    </bean>
+
+    <bean id="doStartExperiment" class="cz.cvut.felk.cig.jcool.ui.controller.StartExperimentAction">
+        <property name="experimentRunner" ref="experimentRunner" />
+        <property name="visualization" ref="model.visualization" />
+        <property name="visualizationControls" ref="view.visualizationControls" />
+        <property name="primaryVisualizationPanel" ref="view.primaryVisualizationPanel" />
+        <property name="secondaryVisualizationPanel" ref="view.secondaryVisualizationPanel" />
+        <property name="telemetryPanel" ref="view.telemetry" />
+    </bean>
+
+    <bean id="doStopExperiment" class="cz.cvut.felk.cig.jcool.ui.controller.StopExperimentAction">
+        <property name="experimentRunner" ref="experimentRunner" />
+        <property name="visualization" ref="model.visualization" />
+        <property name="visualizationControls" ref="view.visualizationControls" />
+    </bean>
+
+    <bean id="doResetExperiment" class="cz.cvut.felk.cig.jcool.ui.controller.ResetExperimentAction">
+        <property name="experimentRunner" ref="experimentRunner" />
+        <property name="visualization" ref="model.visualization" />
+        <property name="visualizationControls" ref="view.visualizationControls" />
+    </bean>
+</beans>
