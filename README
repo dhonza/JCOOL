@@ -9,12 +9,14 @@ In order to compile JCOOL you need:
     
 COMPILE & INSTALL
 
-To compile JCOOL run:
+To compile and install JCOOL run:
 
+    cd configurations
     mvn compile
-
-to install
-
+    mvn install
+    cd ..
+    cd jcool
+    mvn compile
     mvn install
 
 --------------------------------------------
