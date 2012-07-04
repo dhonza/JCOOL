@@ -19,5 +19,15 @@ To compile and install JCOOL run:
     mvn compile
     mvn install
 
+DOCUMENTATION
+
+See wiki: https://github.com/dhonza/JCOOL/wiki
+
+ACKNOWLEDGEMENT
+
+This development of this software was partially supported by the grant Automated Knowledge Extraction (KJB201210701)
+of the Grant Agency of the Academy of Sciences of the Czech Republic.
 --------------------------------------------
 COPYRIGHT Vladimír Bičík, Jan Drchal, Martin Hvizdoš, Pavel Kordík, Roman Machytka, Martin Miklánek, Antonín Šulc, FEL ČVUT, 2012
+
+This library was created at Department of Computer Science and Engineering, FEE CTU, Prague
